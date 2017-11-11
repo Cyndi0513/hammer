@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>移动端触屏设备手势库</title>
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+		<style>
+			#container {
+				width: 400px;
+				border: 1px solid red;
+			 	background: silver;
+			  	height: 300px;
+			  	text-align: center;
+			}
+			#container img{
+				width: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<img src="img/p1.jpg" alt="">
+		</div>
+	</body>
+	<script src="hammer.js"></script>
+	<script>
+		var container=document.getElementById('container');
+		var hammertime = new Hammer(container);
+		hammertime.on('pan', function(ev) {
+		    console.log(ev);
+		    container.innerHTML="<img src='img/p2.jpg' alt=''>";
+		    return false;
+		});
+		hammertime.get('pinch').set({ enable: true });
+		hammertime.get('rotate').set({ enable: true });
+		hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+		
+	</script>
+</html>
